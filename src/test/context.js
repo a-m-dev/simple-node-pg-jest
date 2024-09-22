@@ -79,6 +79,17 @@ class Context {
     return new Context(roleName);
   }
 
+  async reset() {
+    pool.query(`
+      DELETE FROM users;
+      `);
+    // or any other tables at the same time like:
+    // DELETE FROM users;
+    // DELETE FROM tableA;
+    // DELETE FROM tableB;
+    // ...
+  }
+
   // basically ... clean up
   async close() {
     // 1. disconnect from pg as role and created scheam and user

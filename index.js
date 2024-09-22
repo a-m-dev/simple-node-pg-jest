@@ -1,14 +1,9 @@
 const app = require("./src/app");
+const { DEFAULT_CONNECTION_OPTIONS } = require("./src/constants");
 const pool = require("./src/pool");
 
 pool
-  .connect({
-    host: "localhost",
-    port: 5432,
-    database: "socialnetwork",
-    user: "MY_USERNAME_HERE",
-    password: "MY_PASSWORD_HERE",
-  })
+  .connect(DEFAULT_CONNECTION_OPTIONS)
   .then(() => {
     app().listen(3005, () => {
       console.log("Listening on port 3005!");
